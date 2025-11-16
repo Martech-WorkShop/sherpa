@@ -1,0 +1,30 @@
+{{define "content"}}
+    <h2>Content Pieces</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Class</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .}}
+            <tr>
+                <td>{{.ID}}</td>
+                <td>{{.Title}}</td>
+                <td>{{.Class}}</td>
+                <td>
+                    <a href="/pieces/{{.ID}}">View</a>
+                    <a href="/pieces/edit/{{.ID}}">Edit</a>
+                </td>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="4">No content pieces found.</td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+{{end}}

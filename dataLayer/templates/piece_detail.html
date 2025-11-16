@@ -1,0 +1,25 @@
+{{define "content"}}
+    <h2>Piece: {{.Title}} (ID: {{.ID}})</h2>
+    <p><strong>Class:</strong> {{.Class}}</p>
+    <hr>
+    <h3>Contlets:</h3>
+    
+    {{range .Contlets}}
+        <div style="border: 1px solid #eee; padding: 1rem; margin-bottom: 1rem;">
+            <h4>Contlet ID: {{.ID}} (Class: {{.Class}})</h4>
+            {{if eq .Class "paragraph"}}
+                <p>{{.TextContent}}</p>
+            {{else if eq .Class "heading"}}
+                <h{{.Level}}>{{.TextContent}}</h{{.Level}}>
+            {{else if eq .Class "image"}}
+                <figure>
+                    <img src="{{.Src}}" alt="{{.AltText}}" style="max-width: 100%;">
+                    <figcaption>{{.AltText}}</figcaption>
+                </figure>
+            {{end}}
+        </div>
+    {{else}}
+        <p>This content piece has no contlets.</p>
+    {{end}}
+
+{{end}}

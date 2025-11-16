@@ -1,0 +1,30 @@
+{{define "content"}}
+    <h2>Tags</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Value</th>
+                <th>Taxonomy</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .}}
+            <tr>
+                <td>{{.ID}}</td>
+                <td>{{.Value}}</td>
+                <td>{{.TaxonomyName}}</td>
+                <td>
+                    <a href="/tags/{{.ID}}">View</a>
+                    <a href="/tags/edit/{{.ID}}">Edit</a>
+                </td>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="4">No tags found.</td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+{{end}}

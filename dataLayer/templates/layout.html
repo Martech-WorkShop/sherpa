@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataLayer</title>
+    <script src="/static/js/fixi.js"></script>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+        nav { margin-bottom: 2rem; border-bottom: 1px solid #ddd; padding-bottom: 1rem; }
+        nav a { margin-right: 1rem; text-decoration: none; color: #007bff; }
+        h1, h2 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Dashboard</a>
+        <a href="/pieces">Pieces</a>
+        <a href="/contlets">Contlets</a>
+        <a href="/tags">Tags</a>
+        <a href="/schema">Schema Editor</a>
+    </nav>
+    <main>
+        {{template "content" .}}
+    </main>
+</body>
+</html>

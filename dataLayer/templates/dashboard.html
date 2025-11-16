@@ -1,0 +1,73 @@
+{{define "content"}}
+    <style>
+        .dashboard-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .dashboard-column {
+            flex: 1;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .dashboard-column h2 {
+            margin-top: 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .dashboard-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        .dashboard-column li {
+            margin-bottom: 8px;
+        }
+        .new-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+    </style>
+    <h1>Object Dashboard</h1>
+    <p>Manage all `Objects` in the system from this dashboard.</p>
+    <div class="dashboard-container">
+        <div class="dashboard-column">
+            <h2>Pieces</h2>
+            <ul>
+                {{range .Pieces}}
+                <li><a href="/pieces/{{.ID}}">{{.Title}}</a></li>
+                {{else}}
+                <li>No pieces found.</li>
+                {{end}}
+            </ul>
+            <a href="/pieces/new" class="new-button">New Piece</a>
+        </div>
+        <div class="dashboard-column">
+            <h2>Contlets</h2>
+            <ul>
+                {{range .Contlets}}
+                <li><a href="/contlets/{{.ID}}">{{.Content}}</a></li>
+                {{else}}
+                <li>No contlets found.</li>
+                {{end}}
+            </ul>
+            <a href="/contlets/new" class="new-button">New Contlet</a>
+        </div>
+        <div class="dashboard-column">
+            <h2>Tags</h2>
+            <ul>
+                {{range .Tags}}
+                <li><a href="/tags/{{.ID}}">{{.Value}} ({{.TaxonomyName}})</a></li>
+                {{else}}
+                <li>No tags found.</li>
+                {{end}}
+            </ul>
+            <a href="/tags/new" class="new-button">New Tag</a>
+        </div>
+    </div>
+{{end}}

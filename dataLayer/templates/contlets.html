@@ -1,0 +1,28 @@
+{{define "content"}}
+    <h2>Contlets</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Content Summary</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .}}
+            <tr>
+                <td>{{.ID}}</td>
+                <td>{{.Content}}</td>
+                <td>
+                    <a href="/contlets/{{.ID}}">View</a>
+                    <a href="/contlets/edit/{{.ID}}">Edit</a>
+                </td>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="3">No contlets found.</td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+{{end}}

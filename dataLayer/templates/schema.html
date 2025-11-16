@@ -1,0 +1,35 @@
+{{define "content"}}
+    <h2>Schema Editor</h2>
+    <p>Use this page to edit the database schema. Be careful, changes are destructive.</p>
+
+    {{range $tableName, $columns := .}}
+    <form fx-action="/schema/{{$tableName}}" fx-method="POST">
+        <h3>Table: {{$tableName}}</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Null</th>
+                    <th>Key</th>
+                    <th>Default</th>
+                    <th>Extra</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range $i, $col := $columns}}
+                <tr>
+                    <td><input type="text" name="col_{{$i}}_field" value="{{$col.Field}}"></td>
+                    <td><input type="text" name="col_{{$i}}_type" value="{{$col.Type}}"></td>
+                    <td><input type="text" name="col_{{$i}}_null" value="{{$col.Null}}"></td>
+                    <td><input type="text" name="col_{{$i}}_key" value="{{$col.Key}}"></td>
+                    <td><input type="text" name="col_{{$i}}_default" value="{{if $col.Default.Valid}}{{$col.Default.String}}{{end}}"></td>
+                    <td><input type="text" name="col_{{$i}}_extra" value="{{$col.Extra}}"></td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+        <button type="submit">Update {{$tableName}}</button>
+    </form>
+    {{end}}
+{{end}}
